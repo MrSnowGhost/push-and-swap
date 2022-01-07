@@ -6,19 +6,25 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 16:28:16 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/06 17:05:03 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/07 17:57:18 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
 
-void push(int nb,t_list **stack)
+int	push(int nb, t_list **stack)
 {
-	if(*stack == NULL)
+	t_list	*new;
+
+	new = ft_lstnew(nb);
+	if (!new)
+		return (0);
+	if (*stack == NULL)
 	{
-		ft_lstadd_back(stack,ft_lstnew(nb));
-		return ;
+		ft_lstadd_back(stack, new);
+		return (0);
 	}
-	ft_lstadd_front(stack,ft_lstnew(nb));
+	ft_lstadd_front(stack, new);
+	return (1);
 }
 
 int	ft_strcmp(char *s1, char *s2)
@@ -36,30 +42,39 @@ int	ft_strcmp(char *s1, char *s2)
 	}
 	return (0);
 }
-void get_arg(int argc, char **argv,t_var *var)
+
+int	get_arg(int argc, char **argv, t_var *var)
 {
-	int i;
+	int	i;
 
 	i = 1;
-	var->str = ft_strjoin(var->str,argv[i]);
+	var->str = ft_strjoin(var->str, argv[i]);
+	if (!(var->str))
+	{
+		free(var);
+		write(1,"Allocation Error", 16);
+		return (0);
+	}
 	i++;
 	while (i < argc)
 	{
-		var->str = ft_strjoin(var->str," ");
-		var->str = ft_strjoin(var->str,argv[i]);
+		var->str = ft_strjoin(var->str, " ");
+		var->str = ft_strjoin(var->str, argv[i]);
 		i++;
 	}
+	return (1);
 }
-int *list_to_arr(t_list **lst)
+
+int	*list_to_arr(t_list **lst)
 {
-	int size;
-	int *p;
-	int i;
-	t_list *tmp;
+	int		size;
+	int		*p;
+	int		i;
+	t_list	*tmp;
 
 	i = 0;
 	tmp = *lst;
-	size =ft_lstsize(*lst);
+	size = ft_lstsize(*lst);
 	p = malloc(sizeof(int) * size);
 	if (!p)
 		return (NULL);
@@ -70,4 +85,23 @@ int *list_to_arr(t_list **lst)
 		tmp = tmp->next;
 	}
 	return (p);
+}
+
+void	sort_arr(int *arr, int size)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		j = 0;
+		while (j < size - i - 1)
+		{
+			if (*(arr + j) > *(arr + j + 1))
+				swap((arr + j), (arr + j + 1));
+			j++;
+		}
+		i++;
+	}
 }

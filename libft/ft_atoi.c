@@ -6,10 +6,10 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:48:44 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/06 14:38:39 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/07 11:36:31 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
 long	ft_atoi(const char *str)
 {
 	int		i;

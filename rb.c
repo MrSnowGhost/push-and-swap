@@ -6,18 +6,18 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 16:33:47 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/03 16:30:25 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/07 14:45:34 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
 
-void rb(t_list **b)
+void	rb(t_list **b)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	tmp = *b;
-	ft_lstadd_back(b,ft_lstnew(tmp->content));
+	ft_lstadd_back(b, ft_lstnew(tmp->content));
 	*b = tmp->next;
 	free(tmp);
-	write(1,"rb\n",3);
+	write(1, "rb\n", 3);
 }

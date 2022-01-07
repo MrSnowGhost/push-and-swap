@@ -6,18 +6,18 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 16:26:47 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/06 10:50:59 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/07 14:44:58 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
 
-void ra(t_list **a)
+void	ra(t_list **a)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	tmp = *a;
-	ft_lstadd_back(a,ft_lstnew(tmp->content));
+	ft_lstadd_back(a, ft_lstnew(tmp->content));
 	*a = tmp->next;
 	free(tmp);
-	write(1,"ra\n",3);
+	write(1, "ra\n", 3);
 }

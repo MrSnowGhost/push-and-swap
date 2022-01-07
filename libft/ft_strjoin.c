@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:38:29 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/06 13:22:06 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/07 15:58:28 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static char	*ft_strcat(char *dest, const char *src)
 	dest[size + i] = '\0';
 	return (dest);
 }
+
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*p;
@@ -57,8 +58,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	p = (char *)malloc((size1 + size2 + 1) * sizeof(char));
 	if (p == NULL)
 		return (NULL);
-	ft_strcpy(p,s1);
-	ft_strcat(p,s2);
+	ft_strcpy(p, s1);
+	ft_strcat(p, s2);
 	free(s1);
 	return (p);
 }
