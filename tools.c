@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 16:28:16 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/07 17:57:18 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/08 11:13:05 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -21,7 +21,7 @@ int	push(int nb, t_list **stack)
 	if (*stack == NULL)
 	{
 		ft_lstadd_back(stack, new);
-		return (0);
+		return (1);
 	}
 	ft_lstadd_front(stack, new);
 	return (1);
@@ -43,26 +43,28 @@ int	ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-int	get_arg(int argc, char **argv, t_var *var)
+char	*get_arg(int argc, char **argv)
 {
-	int	i;
+	int		i;
+	char	*str;
 
 	i = 1;
-	var->str = ft_strjoin(var->str, argv[i]);
-	if (!(var->str))
+	str = NULL;
+	str = ft_strjoin(str, argv[i]);
+	if (!str)
 	{
-		free(var);
-		write(1,"Allocation Error", 16);
-		return (0);
+		free(str);
+		write(1, "Allocation Error", 16);
+		exit (0);
 	}
 	i++;
 	while (i < argc)
 	{
-		var->str = ft_strjoin(var->str, " ");
-		var->str = ft_strjoin(var->str, argv[i]);
+		str = ft_strjoin(str, " ");
+		str = ft_strjoin(str, argv[i]);
 		i++;
 	}
-	return (1);
+	return (str);
 }
 
 int	*list_to_arr(t_list **lst)

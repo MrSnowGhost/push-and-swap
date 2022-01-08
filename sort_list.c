@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 12:22:50 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/07 16:04:54 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/08 11:11:55 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -22,7 +22,7 @@ void	check_moves(t_list **a, t_list **b, int i, int size)
 	{
 		while (i > 0)
 		{
-			rb(b);
+			rb(a, b);
 			i--;
 		}
 		push_a(a, b);
@@ -32,7 +32,7 @@ void	check_moves(t_list **a, t_list **b, int i, int size)
 		i = size - i;
 		while (i > 0)
 		{
-			rrb(b);
+			rrb(a, b);
 			i--;
 		}
 		push_a(a, b);
@@ -87,21 +87,27 @@ void	midpoint_a(t_list **a, t_list **b, int index)
 	int	size;
 
 	arr = list_to_arr(a);
+	if (!arr)
+	{
+		write(1, "Allocation Error", 16);
+		free_list(a, b);
+	}
 	size = ft_lstsize(*a);
 	sort_arr(arr, size);
 	mid = arr[size / index];
+	free(arr);
 	push_smalls(a, b, mid, index);
 }
 
 void	sort_list(t_list **a, t_list **b)
 {
-	int	size;
+	int		size;
 
 	size = ft_lstsize(*a);
 	if (size == 2)
 		sort_two(a);
 	else if (size == 3)
-		sort_three(a);
+		sort_three(a, b);
 	else if (size >= 4 && size <= 250)
 		sort_small(a, b, size);
 	else if (size > 250)

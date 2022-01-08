@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 08:50:23 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/07 18:01:47 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/08 10:43:21 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -19,7 +19,7 @@ void	sort_two(t_list **a)
 	}
 }
 
-void	sort_three(t_list **a)
+void	sort_three(t_list **a, t_list **b)
 {
 	int		i;
 
@@ -34,14 +34,14 @@ void	sort_three(t_list **a)
 				&& (*a)->content < (*a)->next->next->content)
 				swap_a(*a);
 			else
-				rra(a);
+				rra(a, b);
 		}
 		if ((*a)->content > (*a)->next->content)
 		{
 			if ((*a)->next->next->content > (*a)->content)
 				swap_a(*a);
 			else
-				ra(a);
+				ra(a, b);
 		}
 		i++;
 	}

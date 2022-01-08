@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:42:13 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/07 17:44:48 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/08 11:09:49 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -15,7 +15,7 @@ int	fill_a(t_list **a, char **list)
 {
 	long	number;
 	int		i;
-	t_list *new;
+	t_list	*new;
 
 	i = 0;
 	while (list[i] != NULL)
@@ -35,7 +35,7 @@ int	fill_a(t_list **a, char **list)
 	return (1);
 }
 
-int	check_dup(char **argv)
+void	check_dup(char **argv)
 {
 	int	i;
 	int	j;
@@ -48,17 +48,17 @@ int	check_dup(char **argv)
 		{
 			if (ft_strcmp(argv[i], argv[i + j]) == 0)
 			{
+				free(argv);
 				write(1, "Error\n", 6);
-				return (0);
+				exit (0);
 			}
 			j++;
 		}
 		i++;
 	}
-	return (1);
 }
 
-int	check_arg(char *argv)
+void	check_arg(char *argv)
 {
 	int	i;
 
@@ -69,36 +69,32 @@ int	check_arg(char *argv)
 			&& !(argv[i] == '-') && !(argv[i] == ' '))
 		{
 			write(1, "Error\n", 6);
-			return (0);
+			free(argv);
+			exit(0);
 		}
 		i++;
 	}
-	return (1);
 }
 
-void	list_init(t_var *var)
+void	list_init(char **list)
 {
 	t_list	*a;
 	t_list	*b;
 
 	a = NULL;
 	b = NULL;
-	if (!check_dup(var->list))
+	check_dup(list);
+	if (!fill_a(&a, list))
 	{
-		free(var);
-		return ;
-	}
-	if (!fill_a(&a, var->list))
-	{
-		free(var);
+		free(list);
 		ft_lstclear(&a);
-		return ;
+		exit (0);
 	}
+	free(list);
 	if (check_sorted(&a))
-	{
-		free(var);
+	{	
 		ft_lstclear(&a);
-		return ;
+		exit (0);
 	}
 	sort_list(&a, &b);
 }
@@ -106,42 +102,24 @@ void	list_init(t_var *var)
 int	main(int argc, char **argv)
 {
 	t_list	*tmp;
-	t_var	*var;
+	char	*str;
+	char	**list;
 
-	var = malloc(sizeof(t_var));
-	if (!var)
-	{
-		write(1, "Allocation Error", 16);
-		return (0);
-	}
-	var->str = NULL;
 	if (argc > 1)
-	{
-		if (get_arg(argc, argv, var) == 0)
-			return (0);
-	}
+		str = get_arg(argc, argv);
 	else
 	{
 		write(1, "no argument", 11);
-		return (0);
+		exit (0);
 	}
-	if (!check_arg(var->str))
+	check_arg(str);
+	list = ft_split(str, ' ');
+	if (!list)
 	{
-		free(var);
-		return (0);
-	}
-	var->list = ft_split(var->str, ' ');
-	if (!(var->list))
-	{
-		free(var);
+		free(str);
 		write(1, "Allocation Error", 16);
-		return (0);
+		exit (0);
 	}
-	list_init(var);
-	/*	tmp = a;
-	while (tmp)
-	{	
-		printf("%d ",tmp->content);
-		tmp = tmp->next;
-	}*/
+	free(str);
+	list_init(list);
 }

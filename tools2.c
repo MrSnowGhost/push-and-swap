@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:03:57 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/07 16:03:17 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/08 11:13:28 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -41,12 +41,19 @@ void	push_smalls(t_list **a, t_list **b, int mid, int index)
 		}
 		else if (last->content <= mid)
 		{
-			rra(a);
+			rra(a, b);
 			push_b(a, b);
 			i++;
 		}
 		else if ((*a)->content > mid)
-			ra(a);
+			ra(a, b);
 		last = last_elem(a);
 	}
+}
+
+void	free_list(t_list **a, t_list **b)
+{
+	ft_lstclear(a);
+	ft_lstclear(b);
+	exit (0);
 }
