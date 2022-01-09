@@ -6,10 +6,10 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 08:20:23 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 18:22:41 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/09 10:25:14 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "checker.h"
+#include "../header.h"
 
 void	rra(t_list **a, t_list **b)
 {
@@ -34,5 +34,4 @@ void	rra(t_list **a, t_list **b)
 		free(tmp);
 		i++;
 	}
-	write(1, "rra\n", 4);
 }

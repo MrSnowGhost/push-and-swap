@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:00:53 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 10:26:30 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/09 10:56:53 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef HEADER_H
@@ -48,9 +48,21 @@ void	sort_three(t_list **a, t_list **b);
 void	sort_small(t_list **a, t_list **b, int size);
 void	sort_big(t_list **a, t_list **b, int size);
 int		check_sorted(t_list **a);
-void	list_init(char **a);
+void	list_init(char **list);
 void	push_smalls(t_list **a, t_list **b, int mid, int index);
 t_list	*last_elem(t_list **a);
 void	free_list(t_list **a, t_list **b);
+void	free_arg(char **lst);
+void	check_arg(char *argv);
+void	check_dup(char **argv);
+int		fill_a(t_list **a, char **list);
+void	list_initia(char **list);
+char	**read_instr(char *s);
+void	mv_do(char *lst, t_list **a, t_list **b);
+char	*get_next_line(int fd);
+void	rr(t_list **a, t_list **b);
+void	ss(t_list *a, t_list *b);
+void	rrr(t_list **a, t_list **b);
+void	checker(t_list **a, t_list **b);
 
 #endif

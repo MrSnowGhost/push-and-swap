@@ -6,10 +6,10 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 18:07:03 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/09 08:19:27 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/09 10:09:41 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "checker.h"
+#include "../header.h"
 
 char	*get_arg(int argc, char **argv)
 {

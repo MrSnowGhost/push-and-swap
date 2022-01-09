@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:42:13 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 15:26:06 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/09 08:56:42 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -101,7 +101,6 @@ void	list_init(char **list)
 
 int	main(int argc, char **argv)
 {
-	t_list	*tmp;
 	char	*str;
 	char	**list;
 

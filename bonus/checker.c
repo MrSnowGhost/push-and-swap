@@ -6,15 +6,15 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 13:27:55 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/09 08:14:06 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/09 10:49:38 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "checker.h"
+#include "../header.h"
 
-char **read_instr(char *line)
+char	**read_instr(char *line)
 {
-	char **instr;
-	char *all_lines;
+	char	**instr;
+	char	*all_lines;
 
 	line = get_next_line(0);
 	all_lines = ft_strdup("");
@@ -24,7 +24,7 @@ char **read_instr(char *line)
 		free(line);
 		line = get_next_line(0);
 	}
-	instr = ft_split(all_lines,'\n');
+	instr = ft_split(all_lines, '\n');
 	free(all_lines);
 	return (instr);
 }
@@ -44,15 +44,10 @@ void	list_initia(char **list)
 		exit (0);
 	}
 	free_arg(list);
-	if (check_sorted(&a))
-	{
-		ft_lstclear(&a);
-		exit (0);
-	}
-	checker(&a,&b);
+	checker(&a, &b);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {	
 	char	*str;
 	char	**list;

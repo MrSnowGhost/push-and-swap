@@ -6,10 +6,10 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 09:42:06 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 18:22:59 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/09 10:24:42 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "checker.h"
+#include "../header.h"
 
 void	push_a(t_list **a, t_list **b)
 {	
@@ -25,5 +25,4 @@ void	push_a(t_list **a, t_list **b)
 	}
 	*b = (*b)->next;
 	free(tmmp);
-	write(1, "pa\n", 3);
 }

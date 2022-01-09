@@ -6,10 +6,10 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 16:33:47 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 18:22:33 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/09 11:38:13 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "checker.h"
+#include "../header.h"
 
 void	rb(t_list **a, t_list **b)
 {
@@ -17,6 +17,8 @@ void	rb(t_list **a, t_list **b)
 	t_list	*new;
 
 	tmp = *b;
+	if (ft_lstsize(tmp) == 0)
+		return ;
 	new = ft_lstnew(tmp->content);
 	if (!new)
 	{
@@ -26,5 +28,4 @@ void	rb(t_list **a, t_list **b)
 	ft_lstadd_back(b, new);
 	*b = tmp->next;
 	free(tmp);
-	write(1, "rb\n", 3);
 }

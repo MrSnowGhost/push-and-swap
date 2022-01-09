@@ -6,14 +6,13 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 09:39:35 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 16:41:28 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/09 11:40:43 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "checker.h"
+#include "../header.h"
 
-void ss(t_list *a,t_list *b)
+void	ss(t_list *a, t_list *b)
 {
-	swap(&a->content,&a->next->content);
-	swap(&b->content,&b->next->content);
-	write(1, "ss\n", 3);
+	swap_a(a);
+	swap_b(b);
 }
