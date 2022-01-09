@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 18:07:03 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/09 10:09:41 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/09 13:43:07 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../header.h"
@@ -25,10 +25,12 @@ char	*get_arg(int argc, char **argv)
 		write(2, "Allocation Error\n", 17);
 		exit (0);
 	}
+	check_empty(str, argv[i]);
 	i++;
 	while (i < argc)
 	{
 		str = ft_strjoin(str, " ");
+		check_empty(str, argv[i]);
 		str = ft_strjoin(str, argv[i]);
 		i++;
 	}

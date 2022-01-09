@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 16:28:16 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 16:22:12 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/09 13:42:03 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -33,7 +33,7 @@ int	ft_strcmp(char *s1, char *s2)
 
 	i = 0;
 	if (!s1 || !s2)
-		return (0);
+		return (1);
 	while (*(s1 + i) != '\0' || *(s2 + i) != '\0')
 	{
 		if (*(s1 + i) - *(s2 + i) != 0)
@@ -57,10 +57,12 @@ char	*get_arg(int argc, char **argv)
 		write(2, "Allocation Error\n", 17);
 		exit (0);
 	}
+	check_empty(str, argv[i]);
 	i++;
 	while (i < argc)
 	{
 		str = ft_strjoin(str, " ");
+		check_empty(str, argv[i]);
 		str = ft_strjoin(str, argv[i]);
 		i++;
 	}

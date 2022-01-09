@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:03:57 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 13:55:12 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/09 13:44:13 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -69,4 +69,17 @@ void	free_arg(char **lst)
 		i++;
 	}
 	free(lst);
+}
+
+void	check_empty(char *str, char *argv)
+{
+	int	size;
+
+	size = (int)ft_strlen(argv);
+	if (size == 0)
+	{	
+		write(2, "Error\n", 6);
+		free(str);
+		exit(0);
+	}
 }

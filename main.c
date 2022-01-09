@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:42:13 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/09 08:56:42 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/09 13:31:50 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -107,10 +107,7 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 		str = get_arg(argc, argv);
 	else
-	{
-		write(2, "no argument\n", 12);
 		exit (0);
-	}
 	check_arg(str);
 	list = ft_split(str, ' ');
 	if (!list)

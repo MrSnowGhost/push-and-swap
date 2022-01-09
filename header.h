@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:00:53 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/09 10:56:53 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/09 13:15:59 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef HEADER_H
@@ -64,5 +64,6 @@ void	rr(t_list **a, t_list **b);
 void	ss(t_list *a, t_list *b);
 void	rrr(t_list **a, t_list **b);
 void	checker(t_list **a, t_list **b);
+void	check_empty(char *str, char *argv);
 
 #endif
