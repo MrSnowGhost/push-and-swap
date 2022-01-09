@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:03:57 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 11:13:28 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/08 13:55:12 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -56,4 +56,17 @@ void	free_list(t_list **a, t_list **b)
 	ft_lstclear(a);
 	ft_lstclear(b);
 	exit (0);
+}
+
+void	free_arg(char **lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst[i])
+	{
+		free(lst[i]);
+		i++;
+	}
+	free(lst);
 }

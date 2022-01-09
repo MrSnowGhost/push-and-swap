@@ -6,10 +6,10 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 16:26:47 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 18:20:25 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/09 08:15:58 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "header.h"
+#include "checker.h"
 
 void	ra(t_list **a, t_list **b)
 {

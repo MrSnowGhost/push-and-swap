@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ra.c                                               :+:      :+:    :+:   */
+/*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 16:26:47 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 18:20:25 by ybensell         ###   ########.fr       */
+/*   Created: 2022/01/08 18:24:47 by ybensell          #+#    #+#             */
+/*   Updated: 2022/01/09 08:24:31 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "header.h"
+#include "checker.h"
 
-void	ra(t_list **a, t_list **b)
+int	check_sorted(t_list **a)
 {
 	t_list	*tmp;
-	t_list	*new;
 
-	tmp = *a;
-	new = ft_lstnew(tmp->content);
-	if (!new)
+	tmp = (*a);
+	while (tmp->next)
 	{
-		write(2, "Allocation Error\n", 17);
-		free_list(a, b);
+		if (tmp->content > tmp->next->content)
+			return (0);
+		tmp = tmp->next;
 	}
-	ft_lstadd_back(a, new);
-	*a = tmp->next;
-	free(tmp);
-	write(1, "ra\n", 3);
+	return (1);
 }

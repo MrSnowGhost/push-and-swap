@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 12:22:50 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 11:11:55 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/08 13:55:22 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -89,7 +89,7 @@ void	midpoint_a(t_list **a, t_list **b, int index)
 	arr = list_to_arr(a);
 	if (!arr)
 	{
-		write(1, "Allocation Error", 16);
+		write(2, "Allocation Error\n", 17);
 		free_list(a, b);
 	}
 	size = ft_lstsize(*a);
@@ -112,4 +112,5 @@ void	sort_list(t_list **a, t_list **b)
 		sort_small(a, b, size);
 	else if (size > 250)
 		sort_big(a, b, size);
+	free_list(a, b);
 }

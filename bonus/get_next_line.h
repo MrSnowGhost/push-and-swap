@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ra.c                                               :+:      :+:    :+:   */
+/*   ft_get_next_line.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 16:26:47 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 18:20:25 by ybensell         ###   ########.fr       */
+/*   Created: 2021/11/24 14:53:11 by ybensell          #+#    #+#             */
+/*   Updated: 2022/01/08 16:48:20 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "header.h"
 
-void	ra(t_list **a, t_list **b)
-{
-	t_list	*tmp;
-	t_list	*new;
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-	tmp = *a;
-	new = ft_lstnew(tmp->content);
-	if (!new)
-	{
-		write(2, "Allocation Error\n", 17);
-		free_list(a, b);
-	}
-	ft_lstadd_back(a, new);
-	*a = tmp->next;
-	free(tmp);
-	write(1, "ra\n", 3);
-}
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+#define BUFFER_SIZE 3
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strchr(char *s, int c);
+int		ft_strlen(char *s);
+char	*get_next_line(int fd);
+#endif

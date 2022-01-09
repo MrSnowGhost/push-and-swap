@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:42:13 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 11:09:49 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/08 15:26:06 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -23,7 +23,7 @@ int	fill_a(t_list **a, char **list)
 		number = ft_atoi(list[i]);
 		if (number > 2147483647 || number < -2147483648)
 		{
-			write(1, "Error\n", 6);
+			write(2, "Error\n", 6);
 			return (0);
 		}
 		new = ft_lstnew(number);
@@ -49,7 +49,7 @@ void	check_dup(char **argv)
 			if (ft_strcmp(argv[i], argv[i + j]) == 0)
 			{
 				free(argv);
-				write(1, "Error\n", 6);
+				write(2, "Error\n", 6);
 				exit (0);
 			}
 			j++;
@@ -68,7 +68,7 @@ void	check_arg(char *argv)
 		if ((argv[i] < '0' || argv[i] > '9')
 			&& !(argv[i] == '-') && !(argv[i] == ' '))
 		{
-			write(1, "Error\n", 6);
+			write(2, "Error\n", 6);
 			free(argv);
 			exit(0);
 		}
@@ -86,11 +86,11 @@ void	list_init(char **list)
 	check_dup(list);
 	if (!fill_a(&a, list))
 	{
-		free(list);
+		free_arg(list);
 		ft_lstclear(&a);
 		exit (0);
 	}
-	free(list);
+	free_arg(list);
 	if (check_sorted(&a))
 	{	
 		ft_lstclear(&a);
@@ -109,7 +109,7 @@ int	main(int argc, char **argv)
 		str = get_arg(argc, argv);
 	else
 	{
-		write(1, "no argument", 11);
+		write(2, "no argument\n", 12);
 		exit (0);
 	}
 	check_arg(str);
@@ -117,7 +117,7 @@ int	main(int argc, char **argv)
 	if (!list)
 	{
 		free(str);
-		write(1, "Allocation Error", 16);
+		write(2, "Allocation Error\n", 17);
 		exit (0);
 	}
 	free(str);

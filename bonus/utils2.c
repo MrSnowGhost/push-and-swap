@@ -1,47 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 16:28:16 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 16:22:12 by ybensell         ###   ########.fr       */
+/*   Created: 2022/01/08 18:07:03 by ybensell          #+#    #+#             */
+/*   Updated: 2022/01/09 08:19:27 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "header.h"
-
-int	push(int nb, t_list **stack)
-{
-	t_list	*new;
-
-	new = ft_lstnew(nb);
-	if (!new)
-		return (0);
-	if (*stack == NULL)
-	{
-		ft_lstadd_back(stack, new);
-		return (1);
-	}
-	ft_lstadd_front(stack, new);
-	return (1);
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	if (!s1 || !s2)
-		return (0);
-	while (*(s1 + i) != '\0' || *(s2 + i) != '\0')
-	{
-		if (*(s1 + i) - *(s2 + i) != 0)
-			return (*(s1 + i) - *(s2 + i));
-		i++;
-	}
-	return (0);
-}
+#include "checker.h"
 
 char	*get_arg(int argc, char **argv)
 {
@@ -67,43 +35,54 @@ char	*get_arg(int argc, char **argv)
 	return (str);
 }
 
-int	*list_to_arr(t_list **lst)
+int	push(int nb, t_list **stack)
 {
-	int		size;
-	int		*p;
-	int		i;
-	t_list	*tmp;
+	t_list	*new;
 
-	i = 0;
-	tmp = *lst;
-	size = ft_lstsize(*lst);
-	p = malloc(sizeof(int) * size);
-	if (!p)
-		return (NULL);
-	while (i < size)
+	new = ft_lstnew(nb);
+	if (!new)
+		return (0);
+	if (*stack == NULL)
 	{
-		*(p + i) = tmp->content;
-		i++;
-		tmp = tmp->next;
+		ft_lstadd_back(stack, new);
+		return (1);
 	}
-	return (p);
+	ft_lstadd_front(stack, new);
+	return (1);
 }
 
-void	sort_arr(int *arr, int size)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	while (i < size - 1)
+	if (!s1 || !s2)
+		return (1);
+	while (*(s1 + i) != '\0' || *(s2 + i) != '\0')
 	{
-		j = 0;
-		while (j < size - i - 1)
-		{
-			if (*(arr + j) > *(arr + j + 1))
-				swap((arr + j), (arr + j + 1));
-			j++;
-		}
+		if (*(s1 + i) - *(s2 + i) != 0)
+			return (*(s1 + i) - *(s2 + i));
 		i++;
 	}
+	return (0);
+}
+
+void	free_list(t_list **a, t_list **b)
+{
+	ft_lstclear(a);
+	ft_lstclear(b);
+	exit (0);
+}
+
+void	free_arg(char **lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst[i])
+	{
+		free(lst[i]);
+		i++;
+	}
+	free(lst);
 }

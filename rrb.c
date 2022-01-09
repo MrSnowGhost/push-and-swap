@@ -6,7 +6,7 @@
 /*   By: ybensell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 08:31:24 by ybensell          #+#    #+#             */
-/*   Updated: 2022/01/08 11:02:58 by ybensell         ###   ########.fr       */
+/*   Updated: 2022/01/08 18:21:32 by ybensell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -26,7 +26,7 @@ void	rrb(t_list **a, t_list **b)
 		new = ft_lstnew(tmp->content);
 		if (!new)
 		{
-			write(1, "Allocation Error", 1);
+			write(2, "Allocation Error\n", 17);
 			free_list(a, b);
 		}
 		ft_lstadd_back(b, new);
